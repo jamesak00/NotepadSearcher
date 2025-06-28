@@ -1,0 +1,54 @@
+﻿<Window x:Class="NotepadSearcher.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NotepadSearcher"
+        mc:Ignorable="d"
+        Title="Text File Search" Height="800" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Menu Name="menuBar" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"
+              HorizontalAlignment="Stretch" VerticalAlignment="Top">
+            <MenuItem Header="_File">
+                <MenuItem Header="_New" />
+                <MenuItem Header="_Open Directory" Click="OpenDir_Click"/>
+                <MenuItem Header="_Save" />
+                <Separator />
+                <MenuItem Header="_Exit" />
+            </MenuItem>
+        </Menu>
+
+        <Border Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Margin="10,5,10,5">
+            <TextBox Name="searchBar" SpellCheck.IsEnabled="True"
+                     VerticalAlignment="Center" HorizontalAlignment="Stretch"
+                     TextChanged="TextBox_TextChanged"/>
+        </Border>
+
+        <ListBox Name="listBox" Grid.Row="2" Grid.Column="0"
+                 SelectionChanged="ListBox_SelectionChanged"
+                 HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                 MinWidth="150" Width="214">
+        </ListBox>
+
+        <Rectangle Grid.Row="2" Grid.Column="1" Fill="LightGray" Width="5"/>
+
+        <RichTextBox Name="noteBox"
+             Grid.Row="2" Grid.Column="2"
+             VerticalScrollBarVisibility="Auto" HorizontalAlignment="Stretch"
+             VerticalAlignment="Stretch" IsReadOnly="True"
+             Margin="0,0,10,0">
+        </RichTextBox>
+    </Grid>
+</Window>
